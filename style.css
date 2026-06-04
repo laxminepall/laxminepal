@@ -9,7 +9,7 @@
 }
 
 :root {
-    --bg: #0a0a14;
+    --bg: #f5f0e6;
     --bg-2: #12121f;
     --bg-3: #1a1a2e;
     --text: #f5f5fa;
@@ -74,9 +74,9 @@ ul {
     position: fixed;
     inset: 0;
     background:
-        radial-gradient(ellipse at top left, rgba(255, 62, 165, 0.15), transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(62, 170, 255, 0.15), transparent 50%),
-        radial-gradient(ellipse at center, rgba(168, 85, 247, 0.1), transparent 70%);
+        radial-gradient(ellipse at top left, rgba(255, 62, 165, 0.06), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(62, 170, 255, 0.06), transparent 50%),
+        radial-gradient(ellipse at center, rgba(168, 85, 247, 0.05), transparent 70%);
     z-index: -2;
     animation: bgShift 20s ease-in-out infinite;
 }
@@ -615,6 +615,29 @@ ul {
 .skill-card p {
     color: var(--text-dim);
     font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.learning-tag {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    background: rgba(110, 255, 193, 0.1);
+    color: var(--green);
+    border: 1px solid rgba(110, 255, 193, 0.3);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.learning-note {
+    margin-top: 1rem;
+    color: var(--green);
+    font-size: 0.95rem;
+}
+
+.learning-note strong {
+    color: var(--green);
 }
 
 /* ============================================
