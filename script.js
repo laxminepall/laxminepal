@@ -1,7 +1,3 @@
-/* ============================================
-   FUN PORTFOLIO SCRIPT — Laxmi Nepal ⚡
-   ============================================ */
-
 (function () {
     'use strict';
 
@@ -88,8 +84,8 @@
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // ===== CURSOR TRAIL (subtle fun touch) =====
-    const trails = ['✨', '⭐', '💜', '⚡', '🚀'];
+    // ===== CURSOR TRAIL =====
+    const trails = ['🎂', '🎉', '💜', '🎁', '✨'];
     let lastTrail = 0;
     document.addEventListener('mousemove', (e) => {
         const now = Date.now();
@@ -115,7 +111,31 @@
         setTimeout(() => trail.remove(), 1100);
     });
 
-    // ===== EASTER EGG: click logo 5 times for confetti =====
+    // ===== CONFETTI BURST =====
+    function burstConfetti(count) {
+        const emojis = ['🎉', '🎊', '✨', '⭐', '💜', '🎂', '🎁', '🌸'];
+        for (let i = 0; i < count; i++) {
+            const c = document.createElement('div');
+            c.className = 'confetti-piece';
+            c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            c.style.cssText = `
+                left: ${Math.random() * 100}vw;
+                top: ${-10 - Math.random() * 20}px;
+                font-size: ${0.8 + Math.random() * 1.2}rem;
+                animation-duration: ${2 + Math.random() * 3}s;
+                animation-delay: ${Math.random() * 2}s;
+            `;
+            document.body.appendChild(c);
+            setTimeout(() => c.remove(), 6000);
+        }
+    }
+
+    // Confetti on load
+    window.addEventListener('load', () => {
+        setTimeout(() => burstConfetti(40), 500);
+    });
+
+    // ===== EASTER EGG: click logo 5 times =====
     let logoClicks = 0;
     const logo = document.querySelector('.nav-logo');
     if (logo) {
@@ -123,28 +143,104 @@
             logoClicks++;
             if (logoClicks >= 5) {
                 logoClicks = 0;
-                for (let i = 0; i < 30; i++) {
-                    const c = document.createElement('div');
-                    c.textContent = ['🎉', '✨', '🎊', '⭐', '💜'][Math.floor(Math.random() * 5)];
-                    c.style.cssText = `
-                        position: fixed;
-                        left: ${e.clientX}px;
-                        top: ${e.clientY}px;
-                        pointer-events: none;
-                        font-size: 1.5rem;
-                        z-index: 9999;
-                        transition: all 1.5s ease-out;
-                    `;
-                    document.body.appendChild(c);
-                    const x = (Math.random() - 0.5) * 400;
-                    const y = (Math.random() - 0.5) * 400;
-                    setTimeout(() => {
-                        c.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
-                        c.style.opacity = '0';
-                    }, 50);
-                    setTimeout(() => c.remove(), 1600);
-                }
+                burstConfetti(50);
             }
+        });
+    }
+
+    // ===== BIRTHDAY WISHES =====
+    const STORAGE_KEY = 'laxmi_birthday_wishes';
+
+    const sampleWishes = [
+        { name: 'Anjali Sharma', relation: 'Friend', message: 'Happy birthday Laxmi! So glad to have you in my life. Stay amazing! 💖', time: Date.now() - 86400000 * 2 },
+        { name: 'Ravi Kumar', relation: 'Classmate', message: 'Many many happy returns of the day! Enjoy your day to the fullest 🎂🎉', time: Date.now() - 86400000 * 1 },
+        { name: 'Priya Thapa', relation: 'Sister', message: 'Happy birthday didi! You are the best sister anyone could ask for. Love you! 💕', time: Date.now() - 86400000 * 0.5 },
+    ];
+
+    function getWishes() {
+        try {
+            const data = localStorage.getItem(STORAGE_KEY);
+            if (data) return JSON.parse(data);
+        } catch (e) {}
+        return [];
+    }
+
+    function saveWishes(wishes) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+    }
+
+    function renderWishes() {
+        const grid = document.getElementById('wishes-grid');
+        if (!grid) return;
+        let wishes = getWishes();
+
+        if (wishes.length === 0) {
+            grid.innerHTML = `
+                <div class="wishes-empty">
+                    <span class="big-emoji">🎂</span>
+                    <h3>No wishes yet!</h3>
+                    <p>Be the first to wish Laxmi a happy birthday ✨</p>
+                </div>
+            `;
+            return;
+        }
+
+        wishes.sort((a, b) => b.time - a.time);
+        grid.innerHTML = wishes.map(w => {
+            const initial = w.name.charAt(0).toUpperCase();
+            const timeStr = new Date(w.time).toLocaleDateString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric'
+            });
+            return `
+                <div class="wish-card">
+                    <div class="wish-card-header">
+                        <div class="wish-avatar">${initial}</div>
+                        <div>
+                            <div class="wish-name">${escapeHtml(w.name)}</div>
+                            ${w.relation ? `<div class="wish-relation">${escapeHtml(w.relation)}</div>` : ''}
+                        </div>
+                    </div>
+                    <p class="wish-message">${escapeHtml(w.message)}</p>
+                    <div class="wish-time">💌 ${timeStr}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Init wishes
+    (function initWishes() {
+        const existing = getWishes();
+        if (existing.length === 0) {
+            saveWishes(sampleWishes);
+        }
+        renderWishes();
+    })();
+
+    const wishesForm = document.getElementById('wishes-form');
+    const wishesStatus = document.getElementById('wishes-status');
+    if (wishesForm) {
+        wishesForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = wishesForm.querySelector('[name="wisher-name"]').value.trim();
+            const relation = wishesForm.querySelector('[name="wisher-relation"]').value.trim();
+            const message = wishesForm.querySelector('[name="wish-message"]').value.trim();
+
+            if (!name || !message) return;
+
+            const wishes = getWishes();
+            wishes.push({ name, relation, message, time: Date.now() });
+            saveWishes(wishes);
+            renderWishes();
+            wishesForm.reset();
+            wishesStatus.textContent = '🎉 Your wish has been sent! Thank you! 💖';
+            setTimeout(() => { wishesStatus.textContent = ''; }, 4000);
+            burstConfetti(20);
         });
     }
 })();

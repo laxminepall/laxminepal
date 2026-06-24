@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laxmi Nepal ⚡ Portfolio</title>
-    <meta name="description" content="Portfolio of Laxmi Nepal from Jhapa, Nepal — just finished Grade 12, exploring future study and career options." />
+    <title>🎂 Happy Birthday Laxmi! 🎉</title>
+    <meta name="description" content="Celebrating Laxmi Nepal's birthday — a special birthday wish portfolio! 🎂" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Clash+Display:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
@@ -31,6 +31,7 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#fun" class="nav-link">Fun</a></li>
                 <li><a href="#places" class="nav-link">Places</a></li>
+                <li><a href="#wishes" class="nav-link">Wishes 🎂</a></li>
                 <li><a href="#contact" class="nav-link">Say Hi</a></li>
             </ul>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -42,24 +43,40 @@
     <main>
         <!-- HERO -->
         <section class="hero" id="home">
+            <div class="hero-balloons">
+                <span class="balloon b1">🎈</span>
+                <span class="balloon b2">🎈</span>
+                <span class="balloon b3">🎈</span>
+                <span class="balloon b4">🎈</span>
+                <span class="balloon b5">🎈</span>
+                <span class="balloon b6">🎈</span>
+            </div>
             <div class="container hero-container">
-                <p class="welcome-text" data-reveal>Welcome — so glad you're here ✨</p>
+                <div class="hero-badge" data-reveal>
+                    <span class="dot"></span>
+                    🎂 It's my birthday!
+                </div>
+                <p class="welcome-text" data-reveal>Welcome to my birthday celebration! 🎉</p>
                 <h1 class="hero-name" data-reveal>
-                    <span class="word text-blue">Hi,</span>
-                    <span class="word text-blue">I'm</span>
+                    <span class="word text-pink">Happy</span>
+                    <span class="word text-gold">Birthday</span>
                     <span class="word name-pink">Laxmi</span>
                     <span class="word name-pink">Nepal</span>
                 </h1>
                 <p class="hero-sub" data-reveal>
-                    I'm a <span class="hl-pink">fun</span> and
-                    <span class="hl-blue">friendly</span> person ✨
+                    Another year of being <span class="hl-pink">fabulous</span>,
+                    <span class="hl-gold">fun</span> and
+                    <span class="hl-blue">friendly</span> ✨
                 </p>
                 <p class="hero-tag" data-reveal>
-                    🎓 Just finished Grade 12 · 📍 Jhapa, Nepal · 🔭 Exploring my future
+                    🎂 Celebrating another trip around the sun · 📍 Jhapa, Nepal · 💜 Made with love
                 </p>
                 <div class="hero-cta" data-reveal>
-                    <a href="#contact" class="btn btn-ghost">
-                        Let's talk <i class="fas fa-arrow-right"></i>
+                    <a href="#wishes" class="btn btn-primary">
+                        Leave a Wish 🎁 <i class="fas fa-gift"></i>
+                    </a>
+                    <a href="#about" class="btn btn-ghost">
+                        About Me <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -283,6 +300,40 @@
             </div>
         </section>
 
+        <!-- BIRTHDAY WISHES -->
+        <section class="section wishes" id="wishes">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <h2 class="section-title">Birthday <span class="gradient">Wishes</span> 🎂</h2>
+                    <p class="section-sub">Leave a sweet message for Laxmi! 💌</p>
+                </div>
+                <div class="wishes-form-wrap" data-reveal>
+                    <form class="wishes-form" id="wishes-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="wisher-name" placeholder="Your name ✨" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="wisher-relation" placeholder="How do you know Laxmi? (optional)" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="wish-message" rows="3" placeholder="Write your birthday wish... 💖" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-heart"></i> Send Wish
+                            </button>
+                        </div>
+                        <p class="form-status" id="wishes-status"></p>
+                    </form>
+                </div>
+                <div class="wishes-grid" id="wishes-grid" data-reveal>
+                    <!-- wishes rendered by JS -->
+                </div>
+            </div>
+        </section>
+
         <!-- CONTACT -->
         <section class="section contact" id="contact">
             <div class="container">
@@ -343,7 +394,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© <span id="year"></span> <span class="gradient">Laxmi Nepal</span> · Made with 💜 in Jhapa, Nepal</p>
+            <p>🎂 <span id="year"></span> <span class="gradient">Laxmi Nepal</span> · Made with 💜 · Every year, you get better! ✨</p>
             <a href="#home" class="back-top" aria-label="Back to top">
                 <i class="fas fa-arrow-up"></i>
             </a>

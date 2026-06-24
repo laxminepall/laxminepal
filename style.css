@@ -479,9 +479,19 @@ ul {
     color: var(--blue);
 }
 
+.text-pink {
+    color: var(--pink);
+}
+
+.text-gold {
+    color: #f6c90e;
+}
+
 .name-pink {
     color: #f9a8c4;
 }
+
+.hl-gold { color: #f6c90e; font-weight: 600; }
 
 .hero-sub {
     font-size: clamp(1.2rem, 3vw, 1.8rem);
@@ -1335,6 +1345,212 @@ ul {
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* ============================================
+   BALLOONS
+   ============================================ */
+.hero-balloons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: balloonFloat 6s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.balloon.b1 { left: 5%; animation-delay: 0s; font-size: 3rem; }
+.balloon.b2 { left: 20%; animation-delay: 1s; font-size: 2rem; }
+.balloon.b3 { left: 45%; animation-delay: 2s; font-size: 2.8rem; }
+.balloon.b4 { left: 65%; animation-delay: 3s; font-size: 2.2rem; }
+.balloon.b5 { left: 82%; animation-delay: 4s; font-size: 3.2rem; }
+.balloon.b6 { left: 92%; animation-delay: 5s; font-size: 1.8rem; }
+
+@keyframes balloonFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    25% { transform: translateY(-30px) rotate(5deg); }
+    50% { transform: translateY(-15px) rotate(-3deg); }
+    75% { transform: translateY(-40px) rotate(3deg); }
+}
+
+/* ============================================
+   CONFETTI (used by JS)
+   ============================================ */
+.confetti-piece {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 1.2rem;
+    opacity: 1;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ============================================
+   BIRTHDAY WISHES
+   ============================================ */
+.wishes {
+    background: linear-gradient(180deg, transparent, rgba(255, 62, 165, 0.04), transparent);
+}
+
+.wishes-form-wrap {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.wishes-form {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+
+.wishes-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.wishes-form .form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.wishes-form .btn-primary {
+    background: linear-gradient(135deg, #f6c90e, #ff8c42);
+    box-shadow: 0 10px 30px rgba(246, 201, 14, 0.3);
+}
+
+.wishes-form .btn-primary:hover {
+    box-shadow: 0 15px 40px rgba(246, 201, 14, 0.4);
+}
+
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.wish-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.wish-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f6c90e, var(--pink));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition);
+}
+
+.wish-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(246, 201, 14, 0.3);
+    background: var(--bg-3);
+}
+
+.wish-card:hover::before {
+    transform: scaleX(1);
+}
+
+.wish-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.wish-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f6c90e, var(--pink));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.wish-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.wish-relation {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-weight: 400;
+}
+
+.wish-message {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.wish-time {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 0.75rem;
+    opacity: 0.7;
+}
+
+.wishes-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-dim);
+    grid-column: 1 / -1;
+}
+
+.wishes-empty .big-emoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.wishes-empty h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+/* ============================================
+   RESPONSIVE additions
+   ============================================ */
+@media (max-width: 600px) {
+    .wishes-form .form-row {
+        grid-template-columns: 1fr;
+    }
+    .wishes-grid {
+        grid-template-columns: 1fr;
+    }
+    .balloon { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
