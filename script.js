@@ -111,6 +111,71 @@
         setTimeout(() => trail.remove(), 1100);
     });
 
+    // ===== MUSIC PLAYER =====
+    const musicBtn = document.getElementById('music-btn');
+    const musicPlayer = document.getElementById('music-player');
+    const musicClose = document.getElementById('music-close');
+    const musicIframe = document.getElementById('music-iframe');
+    let musicLoaded = false;
+
+    if (musicBtn && musicPlayer) {
+        musicBtn.addEventListener('click', () => {
+            if (!musicLoaded) {
+                musicIframe.src = 'https://www.youtube.com/embed/TyMUY2CDrjc?autoplay=1';
+                musicLoaded = true;
+            }
+            musicPlayer.classList.toggle('show');
+        });
+    }
+
+    if (musicClose && musicPlayer) {
+        musicClose.addEventListener('click', () => {
+            musicPlayer.classList.remove('show');
+        });
+    }
+
+    // ===== NOTE FOR ME =====
+    const NOTE_KEY = 'laxmi_note';
+    const noteText = document.getElementById('note-text');
+    const editBtn = document.getElementById('edit-note-btn');
+    const noteForm = document.getElementById('note-edit-form');
+    const noteInput = document.getElementById('note-input');
+    const saveBtn = document.getElementById('save-note-btn');
+    const cancelBtn = document.getElementById('cancel-note-btn');
+
+    if (noteText) {
+        const saved = localStorage.getItem(NOTE_KEY);
+        if (saved) noteText.textContent = saved;
+    }
+
+    if (editBtn && noteForm) {
+        editBtn.addEventListener('click', () => {
+            noteInput.value = noteText.textContent;
+            noteForm.style.display = 'block';
+            editBtn.style.display = 'none';
+            noteInput.focus();
+        });
+    }
+
+    if (saveBtn && noteText && noteForm && editBtn) {
+        saveBtn.addEventListener('click', () => {
+            const val = noteInput.value.trim();
+            if (val) {
+                noteText.textContent = val;
+                localStorage.setItem(NOTE_KEY, val);
+            }
+            noteForm.style.display = 'none';
+            editBtn.style.display = 'inline-flex';
+        });
+    }
+
+    if (cancelBtn && noteForm && editBtn) {
+        cancelBtn.addEventListener('click', () => {
+            noteForm.style.display = 'none';
+            editBtn.style.display = 'inline-flex';
+        });
+    }
+
     // ===== CONFETTI BURST =====
     function burstConfetti(count) {
         const emojis = ['🎉', '🎊', '✨', '⭐', '💜', '🎂', '🎁', '🌸'];
@@ -151,10 +216,12 @@
     // ===== BIRTHDAY WISHES =====
     const STORAGE_KEY = 'laxmi_birthday_wishes';
 
+    const SAMPLE_VERSION = 'v2';
+    const VERSION_KEY = 'laxmi_wishes_version';
     const sampleWishes = [
         { name: 'Anjali Sharma', relation: 'Friend', message: 'Happy birthday Laxmi! So glad to have you in my life. Stay amazing! 💖', time: Date.now() - 86400000 * 2 },
         { name: 'Ravi Kumar', relation: 'Classmate', message: 'Many many happy returns of the day! Enjoy your day to the fullest 🎂🎉', time: Date.now() - 86400000 * 1 },
-        { name: 'Priya Thapa', relation: 'Sister', message: 'Happy birthday didi! You are the best sister anyone could ask for. Love you! 💕', time: Date.now() - 86400000 * 0.5 },
+        { name: 'Hemanta Nepal', relation: 'Sister', message: 'Happy birthday buini! You are the best sister anyone could ask for. Love you! 💕', time: Date.now() - 86400000 * 0.5 },
     ];
 
     function getWishes() {
@@ -215,9 +282,10 @@
 
     // Init wishes
     (function initWishes() {
-        const existing = getWishes();
-        if (existing.length === 0) {
+        const savedVersion = localStorage.getItem(VERSION_KEY);
+        if (savedVersion !== SAMPLE_VERSION) {
             saveWishes(sampleWishes);
+            localStorage.setItem(VERSION_KEY, SAMPLE_VERSION);
         }
         renderWishes();
     })();

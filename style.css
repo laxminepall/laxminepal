@@ -511,6 +511,16 @@ ul {
     animation: fadeInUp 0.8s ease 0.6s backwards;
 }
 
+.hero-bio {
+    color: #000;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease 0.5s backwards;
+}
+
 .welcome-text {
     color: var(--text-dim);
     font-size: 0.95rem;
@@ -1246,6 +1256,167 @@ ul {
 }
 
 /* ============================================
+   SPLASH OVERLAY
+   ============================================ */
+.splash-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff3ea5, #a855f7, #3eaaff);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: splashFade 2.5s ease forwards;
+    pointer-events: none;
+}
+
+.splash-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    align-items: center;
+}
+
+.splash-emojis {
+    font-size: clamp(2rem, 6vw, 4rem);
+    display: flex;
+    gap: 0.5em;
+    animation: splashBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s forwards;
+    opacity: 0;
+}
+
+.splash-emojis.bottom {
+    animation-delay: 0.6s;
+}
+
+.splash-word {
+    font-family: 'Clash Display', 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.03em;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.splash-word.y1 {
+    font-size: clamp(4rem, 15vw, 10rem);
+    animation: splashBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.splash-word.y2 {
+    font-size: clamp(3rem, 10vw, 7rem);
+    animation: splashBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards;
+    opacity: 0;
+}
+
+@keyframes splashBounce {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(3deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+@keyframes splashFade {
+    0%, 60% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* ============================================
+   MUSIC PLAYER
+   ============================================ */
+.music-btn {
+    position: fixed;
+    bottom: 95px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f6c90e, #ff8c42);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 30px rgba(246, 201, 14, 0.4);
+    z-index: 999;
+    transition: var(--transition);
+    animation: musicPulse 2s infinite;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes musicPulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(246, 201, 14, 0.4); }
+    50% { box-shadow: 0 10px 50px rgba(246, 201, 14, 0.7); }
+}
+
+.music-player {
+    position: fixed;
+    bottom: 155px;
+    right: 30px;
+    width: 320px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: bottom right;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.music-player.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.music-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #f6c90e, #ff8c42);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.music-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.music-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.music-player iframe {
+    width: 100%;
+    height: 180px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .music-player {
+        right: 10px;
+        width: calc(100vw - 20px);
+        bottom: 140px;
+    }
+    .music-btn {
+        right: 15px;
+        bottom: 80px;
+    }
+}
+
+/* ============================================
    SCROLL TOP
    ============================================ */
 .scroll-top {
@@ -1403,6 +1574,10 @@ ul {
     background: linear-gradient(180deg, transparent, rgba(255, 62, 165, 0.04), transparent);
 }
 
+.wish-black {
+    color: #000;
+}
+
 .wishes-form-wrap {
     max-width: 700px;
     margin: 0 auto 3rem;
@@ -1538,6 +1713,104 @@ ul {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: var(--text);
+}
+
+/* ============================================
+   NOTE FOR ME
+   ============================================ */
+.note-section {
+    background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.04), transparent);
+}
+
+.note-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.note-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.note-text {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text);
+    font-family: 'Playfair Display', 'Georgia', serif;
+    margin-bottom: 2rem;
+}
+
+.edit-note-btn {
+    font-size: 0.85rem;
+}
+
+.note-edit-form {
+    margin-top: 1rem;
+}
+
+.note-edit-form textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    resize: vertical;
+}
+
+.note-edit-form textarea:focus {
+    outline: none;
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+.note-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* ============================================
+   VIDEO SECTION
+   ============================================ */
+.video-section {
+    background: linear-gradient(180deg, transparent, rgba(246, 201, 14, 0.04), transparent);
+}
+
+.video-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.my-video {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    display: block;
+    border: 1px solid var(--border);
+}
+
+.video-note {
+    margin-top: 1rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.video-note code {
+    background: var(--bg-2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
 }
 
 /* ============================================

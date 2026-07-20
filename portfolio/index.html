@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laxmi Nepal | Portfolio</title>
+    <meta name="description" content="Portfolio of Laxmi Nepal" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#home" class="logo">Laxmi Nepal</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <p class="hero-greeting">Hi, I'm</p>
+                    <h1 class="hero-name">Laxmi Nepal</h1>
+                    <p class="hero-title">Student & aspiring developer</p>
+                    <p class="hero-desc">
+                        Based in Jhapa, Nepal. Passionate about technology, problem-solving, and building things that matter.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                        <a href="#projects" class="btn btn-outline">View Projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about" id="about">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I'm a recent Grade 12 graduate from Jhapa, Nepal, currently exploring my path in the world of technology. I'm curious, eager to learn, and excited about building a career in tech.
+                        </p>
+                        <p>
+                            When I'm not studying or coding, you'll find me exploring new ideas, listening to music, or spending time with family.
+                        </p>
+                    </div>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Name</span>
+                            <span class="detail-value">Laxmi Nepal</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Location</span>
+                            <span class="detail-value">Jhapa, Nepal</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Education</span>
+                            <span class="detail-value">Grade 12 Graduate</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Interests</span>
+                            <span class="detail-value">Tech, Coding, Music</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section skills" id="skills">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>C#</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>VS Code</li>
+                            <li>MySQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Nepali</li>
+                            <li>English</li>
+                            <li>Hindi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section projects" id="projects">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-globe"></i></div>
+                        <h3>Personal Portfolio</h3>
+                        <p>This portfolio site — built with HTML, CSS, and JavaScript.</p>
+                        <span class="project-tag">Ongoing</span>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-gift"></i></div>
+                        <h3>Birthday Wishes Board</h3>
+                        <p>An interactive birthday wish collection page with localStorage.</p>
+                        <span class="project-tag">Fun Project</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Get in Touch</h2>
+                    <div class="divider"></div>
+                </div>
+                <div class="contact-content">
+                    <p>Have a question or want to work together? Let's connect!</p>
+                    <div class="contact-links">
+                        <a href="mailto:nepallakshmi518@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i> nepallakshmi518@gmail.com
+                        </a>
+                        <a href="https://github.com/laxminepall" target="_blank" class="contact-link">
+                            <i class="fab fa-github"></i> github.com/laxminepall
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Laxmi Nepal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
